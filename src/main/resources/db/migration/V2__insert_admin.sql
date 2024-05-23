@@ -1,1 +1,1 @@
-insert into admins (id, nome) values (1, 'Lucas');
+insert into admins (id, username) values (1, 'Lucas');
