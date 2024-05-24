@@ -1,18 +1,17 @@
 package com.testeyoux.testeyoux.Controller;
 
 
-import com.testeyoux.testeyoux.Dto.AuthenticationDTO;
 import com.testeyoux.testeyoux.Entity.Admins;
 import com.testeyoux.testeyoux.Entity.Erole;
 import com.testeyoux.testeyoux.Entity.Role;
 import com.testeyoux.testeyoux.Payload.Request.LoginRequest;
 import com.testeyoux.testeyoux.Payload.Request.SignupRequest;
 import com.testeyoux.testeyoux.Payload.Response.JwtResponse;
+import com.testeyoux.testeyoux.Payload.Response.MessageResponse;
 import com.testeyoux.testeyoux.Repository.AdminsRepository;
 import com.testeyoux.testeyoux.Repository.RoleRepository;
 import com.testeyoux.testeyoux.Security.jwt.JwtUtils;
 import com.testeyoux.testeyoux.Security.services.UserDetailsImpl;
-import com.testeyoux.testeyoux.Payload.Response.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -83,26 +82,26 @@ public class AuthController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepository.findByName(Erole.ROLE_USER)
+            Role userRole = roleRepository.findByUsername(Erole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role ->{
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleRepository.findByName(Erole.ROLE_ADMIN)
+                        Role adminRole = roleRepository.findByUsername(Erole.ROLE_ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);
 
                         break;
                     case "mod":
-                        Role modRole = roleRepository.findByName(Erole.ROLE_MODERATOR)
+                        Role modRole = roleRepository.findByUsername(Erole.ROLE_MODERATOR)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(modRole);
 
                         break;
                     default:
-                        Role userRole = roleRepository.findByName(Erole.ROLE_USER)
+                        Role userRole = roleRepository.findByUsername(Erole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Eroor? Role is not found."));
                         roles.add(userRole);
                 }
