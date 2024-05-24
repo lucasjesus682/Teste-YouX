@@ -1,25 +1,27 @@
 package com.testeyoux.testeyoux.Security.jwt;
 
 import com.testeyoux.testeyoux.Security.services.UserDetailsImpl;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import lombok.Value;
+import org.springframework.security.core.Authentication;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
+import io.jsonwebtoken.*;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.logging.Logger;
 
 @Component
 public class JwtUtils {
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(JwtUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-    @Value("${testeyoux.app.jwtSecret")
     private String jwtSecret;
 
-    @Value("${testeyoux.app.jwtExpirationMs")
     private int jwtExpirationMs;
 
-    public String generateJwtToken(Authetication authetication) {
+    public String generateJwtToken(Authentication authetication) {
 
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authetication.getPrincipal();
 
@@ -35,7 +37,7 @@ public class JwtUtils {
     }
 
     public String getUsernameFromJwtToken(String token){
-        return Jwts.paserBuilder().setSigningKey(key()).build()
+        return Jwts.parserBuilder().setSigningKey(key()).build()
                 .parseClaimsJws(token).getBody().getSubject();
     }
 
