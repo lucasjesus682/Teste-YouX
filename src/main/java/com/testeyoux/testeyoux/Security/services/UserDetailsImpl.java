@@ -1,16 +1,15 @@
 package com.testeyoux.testeyoux.Security.services;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.testeyoux.testeyoux.Entity.Admins;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.testeyoux.testeyoux.Entity.Admins;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
@@ -36,7 +35,7 @@ public class UserDetailsImpl implements UserDetails {
 
     public static UserDetailsImpl build(Admins admin) {
         List<GrantedAuthority> authorities = admin.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getClass().getName()))
+                .map(role -> new SimpleGrantedAuthority(role.getUsername().name()))
                 .collect(Collectors.toList());
 
         return new UserDetailsImpl(
@@ -94,8 +93,8 @@ public class UserDetailsImpl implements UserDetails {
     public boolean equals(Object o){
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserDetailsImpl user = (UserDetailsImpl) o;
-        return Objects.equals(id, user.id);
+        UserDetailsImpl admin = (UserDetailsImpl) o;
+        return Objects.equals(id, admin.id);
     }
 
 
