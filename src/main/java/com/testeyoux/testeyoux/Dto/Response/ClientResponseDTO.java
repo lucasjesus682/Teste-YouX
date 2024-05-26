@@ -1,6 +1,7 @@
 package com.testeyoux.testeyoux.Dto.Response;
 
 import com.testeyoux.testeyoux.Entity.Client;
+import com.testeyoux.testeyoux.Entity.UFEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class ClientResponseDTO {
 
     private String email;
 
-    private Long ufId;
+    private UFEnum uf;
 
     private String location;
 
@@ -27,7 +28,7 @@ public class ClientResponseDTO {
         this.cnpj = client.getCnpj();
         this.tel = client.getTel();
         this.email = client.getEmail();
-        this.ufId = client.getUfId();
+        this.uf = client.getUf();
         this.location = client.getLocation();
     }
 }

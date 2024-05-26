@@ -1,5 +1,6 @@
 package com.testeyoux.testeyoux.Dto.Request;
 
+import com.testeyoux.testeyoux.Entity.UFEnum;
 import lombok.Getter;
 
 @Getter
@@ -13,7 +14,8 @@ public class ClientRequestDTO {
 
     private String tel;
 
-    private Long ufId;
+    private UFEnum uf;
 
     private String location;
+
 }

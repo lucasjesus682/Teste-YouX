@@ -16,7 +16,7 @@ public class ClientMapper {
                 .cnpj(clientDTO.getCnpj())
                 .email(clientDTO.getEmail())
                 .tel(clientDTO.getTel())
-                .ufId(clientDTO.getUfId())
+                .ufId(clientDTO.getUf())
                 .location(clientDTO.getLocation())
                 .build();
     }
@@ -34,7 +34,7 @@ public class ClientMapper {
         client.setCnpj(clientDTO.getCnpj());
         client.setEmail(clientDTO.getEmail());
         client.setTel(clientDTO.getTel());
-        client.setUfId(clientDTO.getUfId());
+        client.setUf(clientDTO.getUf());
         client.setLocation(clientDTO.getLocation());
     }
 }

@@ -1,7 +1,6 @@
 package com.testeyoux.testeyoux.Controller;
 
-import com.testeyoux.testeyoux.Entity.UF;
-import com.testeyoux.testeyoux.Service.UFService;
+import com.testeyoux.testeyoux.Service.UFServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +14,11 @@ import java.util.List;
 public class UFController {
 
     @Autowired
-    private UFService ufService;
+    private UFServiceImpl ufServiceImpl;
 
     @GetMapping
-    public ResponseEntity<List<UF>> getUFs() {
-        List<UF> ufs = ufService.fetchUFs();
+    public ResponseEntity<List<String>> getUFs() {
+        List<String> ufs = ufServiceImpl.fetchSiglas();
         return ResponseEntity.ok(ufs);
     }
 }

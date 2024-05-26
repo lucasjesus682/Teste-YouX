@@ -17,5 +17,7 @@ public interface ClientService {
 
     ClientResponseDTO update(Long id, ClientRequestDTO personDTO);
 
-    String delete(Long id);;
+    String delete(Long id);
+
+    String getNameClientById(Long id);
 }

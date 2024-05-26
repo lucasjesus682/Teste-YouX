@@ -3,22 +3,30 @@ package com.testeyoux.testeyoux.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+
+@Getter
+@Setter
 public class UF {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Long id;
 
-    @Getter
-    @Setter
     private String nome;
 
-    @Getter
-    @Setter
+    @ElementCollection(targetClass = UFEnum.class)
+    @Enumerated(EnumType.STRING)
     private String sigla;
+
+    public UF (){
+    }
+
+    public UF(String nome, String sigla){
+        this.nome = getNome();
+        this.sigla = getSigla();
+    }
+
+    public UF(String sigla) {
+    }
 }

@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Table(name = "clients")
 @Entity
@@ -43,29 +41,24 @@ public class Client {
     @Getter
     @Setter
     @Column(nullable = false)
-    private Long ufId;
+    @Enumerated(EnumType.STRING)
+    private UFEnum uf;
 
     @Getter
     @Setter
     private String location;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(  name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
 
     public Client(){
 
     }
 
     @Builder
-    public Client(String name, String cnpj, String email, String tel, Long ufId, String location) {
+    public Client(String name, String cnpj, String email, String tel, UFEnum ufId, String location) {
         this.name = name;
         this.cnpj = cnpj;
         this.email = email;
         this.tel = tel;
-        this.ufId = ufId;
+        this.uf = ufId;
         this.location = location;
     }
 }

@@ -56,4 +56,9 @@ public class ClientServiceImpl implements ClientService {
     private Client returnClient (Long id){
         return clientRepository.findById(id).orElseThrow(() -> new RuntimeException("client not found"));
     }
+
+    public String getNameClientById(Long id){
+        Client client = clientRepository.findById(id).orElseThrow();
+        return client.getName();
+    }
 }
