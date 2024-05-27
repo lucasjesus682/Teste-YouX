@@ -49,6 +49,48 @@ Programas Utilizados :
     
     Git e GitHub - Utilizados para commitar o projeto e subir o código para a nuvem(remoto).
 
+    Docker - Utilizado para integracao com o banco de dados.
+
 Bancos de Dados :
 
     PostgreSQL - Usado em ambiente de desenvolvimento e produção.
+
+## Programas Utilizados :
+
+    Tenha a ferramenta docker instalada no seu computador.
+    
+    Para iniciar você irá, dentro da IDE de escolha (preferencialmente Intelij IDEA), irá rodar o arquivo compose.yaml.
+    
+    Após isso irá rodar a aplicacao chamada TesteyouxApplication.
+
+    Seu backend já está rodando.
+
+    Para testar você pode usar o programa insomnia ou postman.
+
+    Utilizando o frontend disponível em https://github.com/lucasjesus682/Teste-YouX-FrontEnd você poderá registrar e logar o usuário.
+
+    No programa para rotas você poderá testar o CRUD Clients.
+
+    Para cadastro (POST) -> http://localhost:8080/client
+
+    {
+	"name": "Lucas",
+	"cnpj": "09355211000111",
+	"tel": "(74) 2642-3993",
+	"email": "lucas@teste.com",
+	"uf": "RJ",
+	"location": "Rua 7"
+      }
+
+    Para listar todos (GET) -> http://localhost:8080/client/{id}
+
+    Para procurar por id (GET) -> http://localhost:8080/client/{id}
+
+    Para atualizar algum client (UPDATE) -> http://localhost:8080/client/{id}
+
+    Para deletar algum client (DELETE) -> http://localhost:8080/client/{id}
+
+      
+
+      
+
