@@ -69,6 +69,8 @@ Bancos de Dados :
 
     Utilizando o frontend disponível em https://github.com/lucasjesus682/Teste-YouX-FrontEnd você poderá registrar e logar o usuário.
 
+    
+## Como usar :
     No programa para rotas você poderá testar o CRUD Clients.
 
     Para cadastro (POST) -> http://localhost:8080/client
