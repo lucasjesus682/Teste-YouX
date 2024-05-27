@@ -41,7 +41,7 @@ Dependências:
 
      LomBok -> Utilizado para evitar muitas linhas de código através de annotations.
 
-Programas Utilizados :
+Primeiros passos :
 
     Insomnia - Utilizado para fazer as requisições (CONSUMIR) a aplicação.
     
